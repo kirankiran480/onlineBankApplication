@@ -11,6 +11,8 @@
 	<meta name="author" content="">
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/effect-light.min.css" rel="stylesheet" />
+	<link href="css/quantumui.min.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet">
 
 </head>
@@ -238,12 +240,12 @@
 							<label class="control-label col-sm-10"   for="terms">
 								I  Agree to Terms & Conditions
 							</label>
-							<div class="col-sm-2"><input  type = "checkbox" name = "terms" id = "terms" value = "agree" required></div>
+							<div class="col-sm-2"><input  type = "checkbox" name = "terms" id = "terms" ng-model="terms" value = "agree" ></div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-4">
-							<button ng-click="sendPost()" type ="submit" ng-disabled="thirdform.$invalid" class="btn btn-default">Apply</button>
+							<button class="btn btn-primary min-width-192" data-nq-loading-button="sendPost()"  data-loading-text="..Saving" type ="submit" ng-disabled="thirdform.$invalid || !terms" class="btn btn-default">Apply</button>
 						</div>
 						<div class="col-sm-offset-2 col-sm-4">
 							<button ng-click="previous()"  class="btn btn-default">Previous</button>
@@ -267,10 +269,12 @@
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-<script type="text/javascript" src="js/angular-resource.min.js"></script>
-<script type="text/javascript" src="js/validate.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-sanitize.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/quantumui.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/validate.js"></script>
 <script src="js/scripts.js"></script>
 
 </body>

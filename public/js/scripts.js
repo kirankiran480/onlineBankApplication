@@ -1,5 +1,7 @@
 
-angular.module('bankAppOnline', [])
+angular.module('bankAppOnline', ['ngSanitize',
+    'ngAnimate',
+    'ngQuantum'])
   .controller('CustomerCtrl', function ($scope) {
     $scope.step = 1;
 
@@ -72,7 +74,7 @@ angular.module('bankAppOnline', [])
    
     }  
   })
-    .controller('thirdformCtrl', function ($scope,$http,Customer) {
+    .controller('thirdformCtrl', function ($scope,$http,Customer,$alert) {
 
     $scope.accounts = ['Savings','Basic checking','Interest-bearing','Market-Deposits','Certificates of deposit'];
     $scope.customer = Customer.get();
@@ -91,8 +93,16 @@ angular.module('bankAppOnline', [])
             console.log($scope.customer);
             $http.post("/users", data).success(function(data, status) {
                 $scope.status = status;
+
+                    $alert('form saved successfully.','Oley!', 'success', 'top-right');
+
                 console.log($scope.status);
             })
+                .error(function(response, status){
+                    //$alert(options)
+                    //for using more option create object
+                    $alert({title:'Error', content:'An error occured',placement:'top-right',alertType:'danger'});
+                })
         };
 
     })
@@ -107,33 +117,6 @@ angular.module('bankAppOnline', [])
       }
     }
   })
-  // .factory('uniqueness', function () {
-  //   var usernames = [
-  //     'treehouse',
-  //     'mrvdot',
-  //     'angular'
-  //   ];
-
-  //   return {
-  //     taken: function (name) {
-  //       return usernames.indexOf(name) >= 0;
-  //     }
-  //   }
-  // })
- /* .directive('uniqueCheck', function (uniqueness) {
-    return {
-      require: 'ngModel',
-      link: function ($scope, $element, $attrs, ngModelCtrl) {
-        var checkUnique = function (name) {
-          var isValid = !uniqueness.taken(name);
-          ngModelCtrl.$setValidity('unique', isValid);
-          return name;
-        }
-
-        ngModelCtrl.$parsers.push(checkUnique);
-      }
-    }s
-  })*/
   .controller('DebugCtrl', function ($scope, Customer) {
     $scope.customer = Customer.get();
   });// Empty JS for your own code to be here
