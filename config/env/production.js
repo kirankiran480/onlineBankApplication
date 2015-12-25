@@ -3,6 +3,6 @@
 
 // Set the 'production' environment configuration object
 module.exports = {
-	db: 'mongodb://localhost/mean-production',
+	db: 'mongodb://localhost/Customersdb-production',
 	sessionSecret: 'productionSessionSecret'
 };
