@@ -18,8 +18,8 @@ angular.module('bankAppOnline', ['ngSanitize',
 
        $scope.cities = ['Hyderabad','Vizag','Vijayawada','Bangalore','Delhi','Mumbai','Chennai','Noida','Pune','Tirupathi'];
        $scope.professions = ['Doctor','Teacher','Engineer','Lawyer'];
-    $scope.customer = Customer.get();
-  $scope.reset = function() {
+       $scope.customer = Customer.get();
+     $scope.reset = function() {
 
       
         $scope.firstform.$setPristine();
@@ -82,8 +82,8 @@ angular.module('bankAppOnline', ['ngSanitize',
         $scope.thirdform.$setPristine();
            var restore = {
            "accountType":""	,
-     "fdCheck":"",
-     "creditCardCheck":""
+     "fdCheck":false,
+     "creditcardCheck":false
         };
         angular.extend($scope.customer, restore);
    
@@ -108,7 +108,21 @@ angular.module('bankAppOnline', ['ngSanitize',
     })
   .factory('Customer', function () {
     var customer = {
-    
+        "firstname": "",
+        "lastname": "",
+        "age": "",
+        "city": "",
+        "profession": "",
+        "mobile": "",
+        "accountType": "",
+        "fdCheck": false,
+        "creditcardCheck": false,
+        "pan": "",
+        "income": "",
+        "company": "",
+        "designation": "",
+        "address": "",
+        "pin": ""
     };
 
     return {

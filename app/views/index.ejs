@@ -28,109 +28,40 @@
 						<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button> <a class="navbar-brand" href="#">ABC Banking Corp.</a>
 				</div>
-
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="#">Link</a>
-						</li>
-						<li>
-							<a href="#">Link</a>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#">Action</a>
-								</li>
-								<li>
-									<a href="#">Another action</a>
-								</li>
-								<li>
-									<a href="#">Something else here</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<a href="#">Separated link</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<a href="#">One more separated link</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control">
-						</div>
-						<button type="submit" class="btn btn-default">
-							Submit
-						</button>
-					</form>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="#">Link</a>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#">Action</a>
-								</li>
-								<li>
-									<a href="#">Another action</a>
-								</li>
-								<li>
-									<a href="#">Something else here</a>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<a href="#">Separated link</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-
 			</nav>
 		</div>
 	</div>
 	<div class="row">
 		<div ng-switch="step" class="col-sm-offset-4 col-md-4 col-sm-offset-4">
 			<div ng-switch-when="1" ng-controller="firstformCtrl">
-				<form class="form-horizontal" name="firstform" role="form">
+				<form class="form-horizontal" name="firstform" role="form" novalidate >
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="firstname" >First name:</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="firstname" ng-model="customer.firstname" placeholder="Enter First name" required >
+							<input type="text" class="form-control" id="firstname" data-nq-tooltip="" data-qo-theme="info" data-qo-placement="top-right" data-qs-title="Enter First name" ng-model="customer.firstname" placeholder="Enter First name" required >
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="lastname" >Last name:</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="lastname" ng-model="customer.lastname" placeholder="Enter Last name" required >
+							<input type="text" class="form-control" id="lastname" ng-model="customer.lastname" data-qo-theme="info" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="Lastname required!!" placeholder="Enter Last name" required >
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="age">Age:</label>
+						<label class="control-label col-sm-3" for="age" >Age:</label>
 						<div class="col-sm-9">
-							<input type="number" class="form-control" id="lastname" ng-model="customer.age" placeholder="age" required>
+							<input type="number" class="form-control" id="age" name="age" data-qo-theme="info" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="Age should be minimum 18 years"  ng-model="customer.age" ng-min="18" ng-max="100" placeholder="age" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="city">Select city:</label>
-						<select class="form-control"  ng-model="customer.city" class="form-control" id="city" required>
+						<select data-qo-theme="info"  class="form-control"  ng-model="customer.city" class="form-control" id="city" required>
 							<option ng-repeat="city in cities">{{city}}</option>
-
-						</select>
+                        </select>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="Profession">Select Profession:</label>
-						<select class="form-control" ng-model="customer.profession" class="form-control" id="Profession" required>
+						<select data-qo-theme="info" class="form-control" ng-model="customer.profession" class="form-control" id="Profession" required>
 							<option ng-repeat="profession in professions">{{profession}}</option>
 
 						</select>
@@ -138,7 +69,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="mobile"  >Mobile number:</label>
 						<div class="col-sm-9">
-							<input type="number" ng-pattern="/^[0-9]{1,10}$/" ng-minlength="10" ng-maxlength="10"ng-model="customer.mobile" class="form-control col-sm-9" id="mobile" placeholder="Enter 10 digit mobile no." required	>
+							<input type="text" ng-pattern="/^[0-9]{1,10}$/" ng-minlength="10" ng-maxlength="10" ng-model="customer.mobile" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="mobile should have 10 digits" class="form-control" id="mobile" placeholder="Enter 10 digit mobile no." required >
 						</div>
 					</div>
 					<div class="form-group">
@@ -154,47 +85,46 @@
 			</div>
 			<div ng-switch-when="2" ng-controller="secondformCtrl">
 				<p>Hello {{customer.firstname}}</p>
-				<form class="form-horizontal" name="secondform" role="form">
+				<form class="form-horizontal" name="secondform" role="form" novalidate >
 
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="pan">PAN no:</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="pan" ng-model="customer.pan" placeholder="Enter PAN">
+							<input type="text" class="form-control" id="pan" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="PAN is mandatory and should contain 6 digits"  ng-model="customer.pan" ng-minlength="6" ng-maxlength="6" placeholder="Enter PAN" ng-required="true" >
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="income" >Gross Annual Income:</label>
 						<div class="col-sm-9">
-							<input type="number" class="form-control" id="income" ng-model="customer.income" placeholder="Enter Gross Annual Income">
+							<input type="number" class="form-control" id="income" ng-model="customer.income" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="Income is required" placeholder="Enter Gross Annual Income" ng-required="true">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="company" >Company:</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="company" ng-model="customer.company"placeholder="Enter Company name">
+							<input type="text" class="form-control" id="company" ng-model="customer.company" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="Company is required" placeholder="Enter Company name" ng-required="true">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="designation">Select Designation:</label>
-						<select class="form-control" class="form-control" ng-model="customer.designation" id="designation">
+						<select class="form-control" class="form-control"  ng-model="customer.designation" id="designation"  ng-required="true">
 							<option ng-repeat="designation in designations">{{designation}}</option>
 
 						</select>
 					</div>
 					<div class = "form-group">
-
-						<label class="control-label col-sm-3" for = "address">Address:</label>
-						<textarea class = "form-control" ng-model="customer.address" id = "address" rows = "3"></textarea>
+                        <label class="control-label col-sm-3" for = "address">Address:</label>
+						<textarea class = "form-control" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="Address should be given" ng-model="customer.address" id = "address" rows = "3" ng-required="true"></textarea>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="pin">PIN code:</label>
 						<div class="col-sm-9">
-							<input type="number" class="form-control" ng-model="customer.pin" id="pin" placeholder="Enter PIN">
+							<input type="number" class="form-control" ng-model="customer.pin" id="pin" ng-minlength="6" ng-maxlength="6" placeholder="Enter PIN" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="PIN is required and must be 6 digits"ng-required="true">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-4">
-							<button  ng-click="advance()" ng-disabled="secondform.$invalid" class="btn btn-default">Next</button>
+							<button  ng-click="advance()" ng-disabled="secondform.$invalid" class="btn btn-default" >Next</button>
 						</div>
 						<div class="col-sm-offset-2 col-sm-4">
 							<button ng-click="previous()"  class="btn btn-default">Previous</button>
@@ -208,10 +138,10 @@
 
 			<div ng-switch-when="3" ng-controller="thirdformCtrl">
 				<p>Hello {{customer.firstname}}</p>
-				<form class="form-horizontal" name="thirdform" role="form">
+				<form class="form-horizontal" name="thirdform" role="form" novalidate >
 					<div class="form-group">
 						<label class="control-label" for="accounttype">Select Account Type:</label>
-						<select class="form-control" ng-model="customer.accountType" class="form-control" id="accounttype">
+						<select class="form-control" ng-model="customer.accountType" class="form-control" id="accounttype" ng-required="true">
 							<option ng-repeat="account in accounts">{{account}}</option>
 
 						</select>
@@ -221,7 +151,7 @@
 							<label class="control-label col-sm-10"  for="fixeddep">
 								Apply	for	Fixed	deposit
 							</label>
-							<div class="col-sm-2"><input type = "checkbox" ng-model="customer.fdCheck" name = "fixeddep" id = "fixeddep" value = "fd"></div>
+							<div class="col-sm-2"><input type = "checkbox" ng-model="customer.fdCheck" name = "fixeddep" id = "fixeddep" value = "fd" ></div>
 
 						</div>
 					</div>
@@ -240,12 +170,12 @@
 							<label class="control-label col-sm-10"   for="terms">
 								I  Agree to Terms & Conditions
 							</label>
-							<div class="col-sm-2"><input  type = "checkbox" name = "terms" id = "terms" ng-model="terms" value = "agree" ></div>
+							<div class="col-sm-2"><input  type = "checkbox" name = "terms" data-nq-tooltip="" data-qo-placement="top-right" data-qs-title="Please agree to the terms to proceed further" id = "terms" ng-model="terms" value = "agree" required ></div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-4">
-							<button class="btn btn-primary min-width-192" data-nq-loading-button="sendPost()"  data-loading-text="..Saving" type ="submit" ng-disabled="thirdform.$invalid || !terms" class="btn btn-default">Apply</button>
+							<button class="btn btn-primary min-width-192" data-nq-loading-button="sendPost()"  data-loading-text="..Saving" type ="submit" ng-disabled="thirdform.$invalid || !terms" class="btn btn-default">Save</button>
 						</div>
 						<div class="col-sm-offset-2 col-sm-4">
 							<button ng-click="previous()"  class="btn btn-default">Previous</button>
@@ -258,11 +188,11 @@
 			</div>
 		</div>
 
-		<div class="debug" ng-controller="DebugCtrl">
+		<!--<div class="debug" ng-controller="DebugCtrl">
       <pre >
       {{customer | json}}
       </pre>
-		</div>
+		</div>-->
 	</div>
 
 </div>
